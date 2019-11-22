@@ -73,7 +73,7 @@ public class postExternalServiceController extends MainUIController implements I
             private void availableExternalServiceTableList(ArrayList<tempExternalService> data) {
 
                 for (tempExternalService value : data) {
-                    availableExternalData.add(new ExternalService(value.getName(), value.getUrl()));
+                    availableExternalData.add(new ExternalService(value.getName(), value.getUrl(),value.getExternal_service_idx()));
                 }
 
                 availableExternalServiceTitle.setCellValueFactory(cellData -> cellData.getValue().nameProperty());

@@ -4,11 +4,12 @@
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.HBox?>
 
+<?import javafx.scene.control.Label?>
 <HBox fx:id="availableExternalServiceListContainer" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.edb.main.UI.ImprovedAvailableExternalServiceListController">
     <children>
         <TableView fx:id="availableExternalServiceListView" layoutX="100.0" layoutY="78.0" prefHeight="200.0" prefWidth="300.0">
             <columns>
-                <TableColumn fx:id="availableExternalServiceTitle" prefWidth="150.0" text="등록가능한 외부서비스목록   " />
+                <TableColumn fx:id="availableExternalServiceTitle" prefWidth="150.0" text="등록 가능한 외부서비스목록   " />
                 <TableColumn fx:id="availableExternalServiceUrl" minWidth="130.0" prefWidth="133.0" text="URL" />
             </columns>
         </TableView>

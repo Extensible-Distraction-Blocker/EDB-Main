@@ -17,4 +17,7 @@ public class tempExternalService {
         return url;
     }
 
+    public int getExternal_service_idx(){
+        return external_service_idx;
+    }
 }

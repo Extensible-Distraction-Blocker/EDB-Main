@@ -82,7 +82,7 @@ public class PluginConfigUIController extends MainUIController implements Initia
 
             private void showExternalServiceTableList(ArrayList<tempExternalService> data) {
                 for (tempExternalService value : data) {
-                    userExternalData.add(new ExternalService(value.getName(), value.getUrl()));
+                    userExternalData.add(new ExternalService(value.getName(), value.getUrl(),value.getExternal_service_idx()));
                 }
                 userExternalServiceTitle.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
                 userExternalServiceUrl.setCellValueFactory(cellData -> cellData.getValue().urlProperty());

@@ -1,4 +1,4 @@
-package org.edb;
+package org.edb.main;
 
 import org.junit.Test;
 

@@ -1,19 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.HBox?>
 
-<HBox fx:id="userExternalServiceListContainer" prefHeight="200.0" prefWidth="300.0" xmlns="http://javafx.com/javafx/8.0.172-ea" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.edb.main.UI.ImprovedUserExternalServiceListController">
+<?import javafx.scene.control.Button?>
+<HBox fx:id="userExternalServiceListContainer" prefHeight="300.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="org.edb.main.UI.ImprovedUserExternalServiceListController">
     <children>
         <TableView fx:id="userExternalServiceListView" layoutX="100.0" layoutY="78.0" prefHeight="200.0" prefWidth="300.0">
             <columns>
-                <TableColumn fx:id="userExternalServiceTitle" prefWidth="150.0" text="등록된 외부서비스목록   " />
+                <TableColumn fx:id="userExternalServiceTitle" prefWidth="150.0" text="등록된 외부서비스 목록   " />
                 <TableColumn fx:id="userExternalServiceUrl" minWidth="130.0" prefWidth="133.0" text="URL" />
             </columns>
         </TableView>
     </children>
+    <children>
+        <TableView fx:id="externalServiceDetailView" layoutX="200.0" layoutY="78.0" prefHeight="200.0" prefWidth="200.0" visible="false">
+            <columns>
+                <TableColumn fx:id="externalServiceDetailTitle" minWidth="130.0" prefWidth="133.0" text="달성목표 " />
+                <TableColumn fx:id="externalServiceDetail_IF_ARCHIEVE" minWidth="130.0" prefWidth="133.0" text="달성여부" />
+                <TableColumn fx:id="externalServiceDetailChkBox" minWidth="130.0" prefWidth="133.0"  />
+            </columns>
+        </TableView>
+        <Button fx:id="postExternalDetailBtn" onAction="#postExternalDetailRequest" layoutX="118.0" layoutY="150.0" mnemonicParsing="false" text="달성 갱신" visible ="false" />
+    </children>
+
 
 </HBox>
