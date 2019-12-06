@@ -1,6 +1,7 @@
 package org.edb.main.network;
 
 import com.google.gson.JsonObject;
+import org.edb.main.network.post.postSignupResponse;
 import org.json.JSONObject;
 import retrofit2.Call;
 import retrofit2.http.Body;
@@ -17,8 +18,9 @@ public interface userNetworkService {
     Call<getUserInfoResponse> getUserInfoAPI(@Path("userIdx") int userIdx);
 
     //회원가입
-//    @POST("auth/signup")
-  //  Call<signupResponse> signupAPI(@Body() JsonObject body);
+    @POST("auth/signup")
+    Call<postSignupResponse> postSignupAPI(@Body() JsonObject body);
+
 
     //로그인
     @POST("auth/signin")

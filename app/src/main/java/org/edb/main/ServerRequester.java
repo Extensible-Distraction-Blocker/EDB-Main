@@ -18,4 +18,6 @@ public interface ServerRequester {
     public void setServerResponseHandler(ServerResponseHandler serverResponseHandler);
 
 
+    public void requestSingup(String id, String pw,String email,String grade);
+
 }

@@ -94,6 +94,15 @@ public class FXManipulator implements UIManipulator {
     }
 
 
+    @Override
+    public void onResponseUserSignup(boolean success){
+        Platform.runLater(()->{
+            System.out.print("test AVAILABLE PLUGIN LIST\n");
+            System.out.print(success);
+        });
+    }
+
+
     public void setMainUIController(MainUIController mainUIController) {
         this.mainUIController = mainUIController;
     }

@@ -24,4 +24,6 @@ public interface UIManipulator {
     void onResponsePluginDetails(int pluginIdx, PluginModel data);
 
     void onPluginLifeCycleChanged(int pluginIdx);
+
+    void onResponseUserSignup(boolean success);
 }

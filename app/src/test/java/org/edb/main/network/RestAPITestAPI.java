@@ -57,4 +57,22 @@ public class RestAPITestAPI {
         restAPIRequester.requestLogin(id,pw);
     }
 
+
+    public static void signupFotTest(String id, String pw,String email,String grade){
+        ServerResponseHandler serverResponseHandler=mock(ServerResponseHandler.class);
+
+        doAnswer(new Answer<Void>(){
+            @Override
+            public Void answer(InvocationOnMock invocationOnMock) throws Throwable {
+                Object[] args = invocationOnMock.getArguments();
+                System.out.print("args test\n");
+                System.out.print(args);
+                return null;
+            }
+        }).when(serverResponseHandler).handleSignupResponse(anyBoolean());
+
+        RestAPIRequester restAPIRequester=new RestAPIRequester();
+        restAPIRequester.setServerResponseHandler(serverResponseHandler);
+        restAPIRequester.requestSingup(id,pw,email,grade);
+    }
 }

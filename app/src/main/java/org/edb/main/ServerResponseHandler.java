@@ -75,4 +75,13 @@ public class ServerResponseHandler {
 
     }
 
+
+    //회원가입
+    public void handleSignupResponse(boolean success) {
+        if(success){
+            System.out.print("success!!!!");
+        }
+        uiManipulator.onResponseUserSignup(success);
+    }
+
 }

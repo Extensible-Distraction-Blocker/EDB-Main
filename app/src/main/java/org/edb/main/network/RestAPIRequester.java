@@ -11,6 +11,7 @@ import org.edb.main.network.get.*;
 
 import org.edb.main.network.post.postLoginResponse;
 import org.edb.main.network.post.postPluginDetailResponse;
+import org.edb.main.network.post.postSignupResponse;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -328,5 +329,39 @@ public class RestAPIRequester  implements ServerRequester {
 
         System.out.println(jsonObject.toString());
         return jsonObject;
+    }
+    @Override
+    public void requestSingup(String id, String pw,String email,String grade) {
+
+        System.out.print("db connect signup test\n");
+
+        JsonObject jsonObject = new JsonObject();
+        jsonObject.addProperty("id", id);
+        jsonObject.addProperty("passwd", pw);
+        jsonObject.addProperty("email", email);
+        jsonObject.addProperty("grade",grade);
+
+
+        Call<postSignupResponse> postSignupResponseCall =
+                RestApiConnector.getUserNetworkService().postSignupAPI(jsonObject);
+
+        postSignupResponseCall.enqueue(new Callback<postSignupResponse>() {
+
+            @Override
+            public void onResponse(Call<postSignupResponse> call, Response<postSignupResponse> response) {
+
+                boolean success = response.body().getStatus() == 200? true : false;
+
+
+                serverResponseHandler.handleSignupResponse(success);
+            }
+
+            @Override
+            public void onFailure(Call<postSignupResponse> call, Throwable throwable) {
+                System.out.print("error\n");
+                System.out.println(throwable);
+            }
+        });
+
     }
 }

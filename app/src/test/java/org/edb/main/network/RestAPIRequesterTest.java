@@ -180,4 +180,11 @@ public class RestAPIRequesterTest {
 
 //        restAPIRequester1.postUserPluginWithJsonObject(1, tempJsonConverter.getJsonObjectForPost());
     }
+
+
+    @Test
+    public void tempSignup(){
+        RestAPITestAPI.signupFotTest("jooha208","123","joonha208@gmail.com","SERVICE_PROVIDER");
+    }
+    
 }
