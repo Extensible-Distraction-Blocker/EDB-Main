@@ -103,6 +103,21 @@
             <version>${pf4j.version}</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
+
         <!-- Logs -->
         <dependency>
             <groupId>log4j</groupId>
