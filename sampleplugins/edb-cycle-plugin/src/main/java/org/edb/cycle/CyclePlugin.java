@@ -20,10 +20,10 @@ public class CyclePlugin extends EDBPlugin {
 
     }
 
-    public void checkForLogics(List<String> curPrograms, List<String> curWebsites, Date curTime) {
+    public void checkForLogics( List<String> curWebsites, Date curTime) {
         if(isRunning) {
             for (Map.Entry<String, PluginLogic> singleLogic : pluginLogics.entrySet()) {
-                singleLogic.getValue().checkForLogic(this,curPrograms, curWebsites, curTime);
+                singleLogic.getValue().checkForLogic(this, curWebsites, curTime);
             }
         }
     }

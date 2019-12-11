@@ -2,6 +2,7 @@ package org.edb.cycle;
 
 import org.edb.cycle.ui.CyclePluginConfigUIController;
 import org.edb.main.EDBPlugin;
+import org.edb.main.Platform.WindowsNativeExecutor;
 import org.edb.main.PluginLogic;
 import org.edb.main.PluginConfigConverter;
 import org.edb.main.UI.SpecificConfigUIController;
@@ -87,11 +88,12 @@ public class CycleLogic extends PluginLogic {
         return string;
     }
 
+//    TODO curPrograms 제거.
     @Override
-    public void checkForLogic(EDBPlugin plugin, List<String> curPrograms, List<String> curWebsites, Date curTime) {
+    public void checkForLogic(EDBPlugin plugin, List<String> curWebsites, Date curTime) {
         checkAndChangeMode(curTime);
         if(curMode == CycleMode.FOCUS){
-            checkForPrograms(plugin.getTargetPrograms(), curPrograms);
+            checkForPrograms(plugin.getTargetPrograms());
             checkForWebsites(plugin.getTargetWebsites(), curWebsites);
         }
     }
@@ -117,10 +119,12 @@ public class CycleLogic extends PluginLogic {
     }
 
 
-    private void checkForPrograms(Map<String, TargetProgram> targetPrograms, List<String> curPrograms) {
-        List<String> commonPrograms = new ArrayList(curPrograms);
-        commonPrograms.retainAll(targetPrograms.keySet());
-//        TODO OSNativeExecutor 개발 후 일치 프로그램 종료요청
+    private void checkForPrograms(Map<String, TargetProgram> targetPrograms) {
+        ArrayList<String> targetProgramList = new ArrayList<String>(targetPrograms.keySet());
+        WindowsNativeExecutor nativeExecutor = new WindowsNativeExecutor();
+        nativeExecutor.taskKillWithProcessNames(targetProgramList);
+
+//        TODO WindowNativeExecutor 의존성 제거
 //        OSNativeExecutor에게 일치하는 프로그램 종료 요청한다.(static?)
 //        전달 매개변수는 targetProgram의 리스트
     }

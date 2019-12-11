@@ -18,7 +18,7 @@ public abstract class PluginLogic {
 
     public abstract void extractConfig(PluginConfigConverter pluginConfigConverter);
 
-    public abstract void checkForLogic(EDBPlugin plugin, List<String> curPrograms, List<String> curWebsites, Date curTime);
+    public abstract void checkForLogic(EDBPlugin plugin,List<String> curWebsites, Date curTime);
 
     public abstract void initializeLogicBeforeStart();
 

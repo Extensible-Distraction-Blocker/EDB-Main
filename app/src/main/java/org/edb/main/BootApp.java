@@ -40,7 +40,7 @@ public class BootApp extends Application {
     }
 
     public void initComponentRoots(){
-//        TODO pluginManager작업이 fxml 생성작업보다 우선해야 한다.
+//        **TODO pluginManager작업이 fxml 생성작업보다 우선해야 한다.
         FXManipulator fxManipulator= new FXManipulator();
         EDBPluginManager edbPluginManager = new EDBPluginManager();
         edbPluginManager.setManipulator(fxManipulator);

@@ -27,7 +27,7 @@ public abstract class EDBPlugin {
     public abstract String getPluginConfigUIPath();
 
     public abstract void renewTrackingTarget();
-    public abstract void checkForLogics(List<String> curPrograms, List<String> curWebsites, Date curTime);
+    public abstract void checkForLogics(List<String> curWebsites, Date curTime);
 
     public abstract int getPluginIdx();
     public abstract String getPluginName();

@@ -140,7 +140,7 @@ public class PluginConfigUIController implements Initializable {
     }
 
     private void widerConfigArea(double singleConfigUIHeight) {
-//        TODO widerConfigArea
+//        **TODO widerConfigArea
     }
 
     public void addTargetProgram(){
