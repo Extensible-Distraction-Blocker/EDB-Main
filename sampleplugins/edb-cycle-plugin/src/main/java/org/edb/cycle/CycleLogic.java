@@ -88,7 +88,6 @@ public class CycleLogic extends PluginLogic {
         return string;
     }
 
-//    TODO curPrograms 제거.
     @Override
     public void checkForLogic(EDBPlugin plugin, List<String> curWebsites, Date curTime) {
         checkAndChangeMode(curTime);

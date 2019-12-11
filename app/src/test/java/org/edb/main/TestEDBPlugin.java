@@ -34,7 +34,7 @@ public class TestEDBPlugin extends EDBPlugin {
     }
 
     @Override
-    public void checkForLogics(List<String> curPrograms, List<String> curWebsites, Date curTime) {
+    public void checkForLogics(List<String> curWebsites, Date curTime) {
 
     }
 

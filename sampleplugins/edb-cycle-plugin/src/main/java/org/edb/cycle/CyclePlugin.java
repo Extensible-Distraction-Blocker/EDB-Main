@@ -2,11 +2,13 @@ package org.edb.cycle;
 
 import org.edb.main.EDBPlugin;
 import org.edb.main.PluginLogic;
+import org.pf4j.Extension;
 
 import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
+@Extension
 public class CyclePlugin extends EDBPlugin {
     private static final int pluginIdx=2;
     private static final String pluginName="CyclePlugin";

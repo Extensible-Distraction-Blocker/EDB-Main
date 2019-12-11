@@ -5,6 +5,8 @@ import org.edb.main.Platform.WindowsNativeExecutor;
 import org.edb.main.model.PluginModel;
 import org.edb.main.model.TargetProgram;
 import org.edb.main.util.DateFormatter;
+import org.pf4j.DefaultPluginManager;
+import org.pf4j.PluginManager;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -24,6 +26,17 @@ public class EDBPluginManager {
 
     public EDBPluginManager(){
         plugins = new HashMap<Integer, EDBPlugin>();
+        loadPlugins();
+    }
+
+    private void loadPlugins() {
+        PluginManager pluginManager = new DefaultPluginManager();
+        List<EDBPlugin> pluginList = pluginManager.getExtensions(EDBPlugin.class);
+        System.out.println(String.format("Found %d extensions for extension point", pluginList.size()));
+        for (EDBPlugin plugin :
+                pluginList) {
+            plugins.put(plugin.getPluginIdx(),plugin);
+        }
     }
 
     public String findPluginConfigUIPath(Integer pluginIdx){
@@ -58,7 +71,7 @@ public class EDBPluginManager {
             if(cycleChanged){
                 manipulator.onPluginLifeCycleChanged(singlePlugin.getPluginIdx());
             }
-            singlePlugin.checkForLogics(curPrograms,curWebsites,curTime);
+            singlePlugin.checkForLogics(curWebsites,curTime);
         }
     }
 
