@@ -45,5 +45,5 @@ public class CyclePlugin extends EDBPlugin {
     protected void onLifeCycleStart() {
         CycleLogic cycleLogic = (CycleLogic)pluginLogics.get("CycleLogic");
         cycleLogic.initializeLogicBeforeStart();
-}
+    }
 }

@@ -93,7 +93,8 @@ public class CycleLogic extends PluginLogic {
         checkAndChangeMode(curTime);
         if(curMode == CycleMode.FOCUS){
             checkForPrograms(plugin.getTargetPrograms());
-            checkForWebsites(plugin.getTargetWebsites(), curWebsites);
+//            Todo website처리 주석
+//            checkForWebsites(plugin.getTargetWebsites(), curWebsites);
         }
     }
 
@@ -139,10 +140,19 @@ public class CycleLogic extends PluginLogic {
     public void initializeLogicBeforeStart() {
         setCurMode(CycleMode.FOCUS);
         renewDate(focusCycle);
-        controller.onPluginStart();
+        if(controller==null){
+            System.out.println("beforeStart null");
+        }
+//        TODO null controller
+//        controller.onPluginStart();
     }
 
+    @Override
     public void addController(SpecificConfigUIController controller) {
+//        TODO 여기선 null이 아닌데
+        if(controller==null){
+            System.out.println("cyclelogic controller null");
+        }
         this.controller = (CyclePluginConfigUIController)controller;
     }
 
