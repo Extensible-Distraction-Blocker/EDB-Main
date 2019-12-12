@@ -1,10 +1,10 @@
-package org.edb.cycle;
+package org.edb.main.samplePlugin.cycle;
 
-import org.edb.cycle.ui.CyclePluginConfigUIController;
+import org.edb.main.samplePlugin.cycle.ui.CyclePluginConfigUIController;
 import org.edb.main.EDBPlugin;
 import org.edb.main.Platform.WindowsNativeExecutor;
-import org.edb.main.PluginLogic;
 import org.edb.main.PluginConfigConverter;
+import org.edb.main.PluginLogic;
 import org.edb.main.UI.SpecificConfigUIController;
 import org.edb.main.model.TargetProgram;
 import org.edb.main.model.TargetWebsite;

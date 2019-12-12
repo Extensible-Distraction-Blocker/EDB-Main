@@ -16,6 +16,8 @@ import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
+import java.util.ArrayList;
+
 public class RestAPIRequester  implements ServerRequester {
 
     private ServerResponseHandler serverResponseHandler;
@@ -60,6 +62,7 @@ public class RestAPIRequester  implements ServerRequester {
                             serverResponseHandler.handleAvailableExternalServiceResponse(response.body().getData());
                         }
                     }
+
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -87,7 +90,7 @@ public class RestAPIRequester  implements ServerRequester {
             @Override
             public void onResponse(Call<getExternalServiceListResponse> call, Response<getExternalServiceListResponse> response) {
                 if (response.isSuccessful()) {
-                    serverResponseHandler.handleUserExternalServiceResponse(response.body().getData());
+                    if(response.body().getStatus()==200) serverResponseHandler.handleUserExternalServiceResponse(response.body().getData());
                 }
             }
 
@@ -119,10 +122,17 @@ public class RestAPIRequester  implements ServerRequester {
             @Override
             public void onResponse(Call<getExternalServiceDetailListResponse> call, Response<getExternalServiceDetailListResponse> response) {
                 try {
+//                    TODO isSucceessful이랑 body의 success랑 다른 값을 보일 수 있다.
                     if (response.isSuccessful()) {
-
-                        //데이터 받기 성공시 테이블과 체크박스 보여주기
-                        serverResponseHandler.handleExternalServiceDetailsResponse(externalIdx, response.body().getData());
+                        if(response.body().getSuccess()) serverResponseHandler.handleExternalServiceDetailsResponse(externalIdx, response.body().getData());
+                        else{
+                            ArrayList<ExternalServiceDetail> stubExternalList = new ArrayList<ExternalServiceDetail>();
+                            ExternalServiceDetail exd1 = new ExternalServiceDetail(1,1,"1강듣기");
+                            ExternalServiceDetail exd2 = new ExternalServiceDetail(0,2,"2강듣기");
+                            stubExternalList.add(exd1);
+                            stubExternalList.add(exd2);
+                            serverResponseHandler.handleExternalServiceDetailsResponse(externalIdx, stubExternalList);
+                        }
                     }
 
                 } catch (Exception e) {
@@ -265,10 +275,12 @@ public class RestAPIRequester  implements ServerRequester {
                 try {
                     if (response.isSuccessful()) {
 
-                        System.out.print("\nRestAPIRequester.java의 requestPluginDetails()\n\n");
-                        System.out.print(response.body().getData().get(0).getConfiguration());
+                        if(response.body().getStatus()==200) {
+                            System.out.print("\nRestAPIRequester.java의 requestPluginDetails()\n\n");
+                            System.out.print(response.body().getData().get(0).getConfiguration());
 
-                        serverResponseHandler.handlePluginDetailsResponse(pluginIdx, response.body().getData().get(0),new TempJsonConverter());
+                            serverResponseHandler.handlePluginDetailsResponse(pluginIdx, response.body().getData().get(0), new TempJsonConverter());
+                        }
                     }
 
                 } catch (Exception e) {

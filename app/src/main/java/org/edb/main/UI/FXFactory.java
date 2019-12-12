@@ -13,7 +13,6 @@ public class FXFactory {
 
     private static FXFactory fxFactory;
 
-
     public void setPluginManager(EDBPluginManager pluginManager) {
         this.pluginManager = pluginManager;
     }
@@ -35,13 +34,13 @@ public class FXFactory {
 
     public Parent loadMainUI(String path)throws Exception{
         FXMLLoader loader = new FXMLLoader();
-        loader.setLocation(BootApp.class.getResource(path));
+        loader.setLocation(getClass().getResource(path));
         Parent parent =loader.load();
 
-        MainUIController controller = loader.<MainUIController>getController();
-        controller.setUiEventHandler(uiEventHandler);
-        controller.setPluginManager(pluginManager);
-        fxManipulator.setMainUIController(controller);
+        loader.<MainUIController>getController().setPluginManager(pluginManager);
+        loader.<MainUIController>getController().setUiEventHandler(uiEventHandler);
+        loader.<MainUIController>getController().init();
+        fxManipulator.setMainUIController(loader.getController());
 
         return parent;
     }
@@ -64,6 +63,7 @@ public class FXFactory {
 
         loader.<AvailableExternalServiceListController>getController().setUiEventHandler(uiEventHandler);
         fxManipulator.setAvailableExternalServicelListController(loader.getController());
+        loader.<AvailableExternalServiceListController>getController().init();
 
         return parent;
     }
@@ -105,6 +105,7 @@ public class FXFactory {
         controller.setPluginLogic(logic);
         logic.addController(controller);
 
+        System.out.println("pluginConfigUI Loaded");
         return parent;
     }
 }

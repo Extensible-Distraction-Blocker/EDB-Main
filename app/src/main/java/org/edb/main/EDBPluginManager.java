@@ -4,7 +4,10 @@ import org.edb.main.Platform.OSNativeExecutor;
 import org.edb.main.Platform.WindowsNativeExecutor;
 import org.edb.main.model.PluginModel;
 import org.edb.main.model.TargetProgram;
+import org.edb.main.samplePlugin.cycle.CyclePlugin;
 import org.edb.main.util.DateFormatter;
+import org.pf4j.DefaultPluginManager;
+import org.pf4j.PluginManager;
 
 import java.text.ParseException;
 import java.util.Date;
@@ -24,6 +27,27 @@ public class EDBPluginManager {
 
     public EDBPluginManager(){
         plugins = new HashMap<Integer, EDBPlugin>();
+        loadPlugins();
+    }
+
+    private void loadPlugins() {
+//        loadPluginsWithPF4J();
+        loadSamplePlugin();
+    }
+
+    private void loadSamplePlugin() {
+        CyclePlugin cyclePlugin = new CyclePlugin();
+        plugins.put(cyclePlugin.getPluginIdx(),cyclePlugin);
+    }
+
+    private void loadPluginsWithPF4J() {
+        PluginManager pluginManager = new DefaultPluginManager();
+        List<EDBPlugin> pluginList = pluginManager.getExtensions(EDBPlugin.class);
+        System.out.println(String.format("Found %d extensions for extension point", pluginList.size()));
+        for (EDBPlugin plugin :
+                pluginList) {
+            plugins.put(plugin.getPluginIdx(),plugin);
+        }
     }
 
     public String findPluginConfigUIPath(Integer pluginIdx){
@@ -41,6 +65,8 @@ public class EDBPluginManager {
         plugins.get(pluginIdx).decodeConfigs(data,pluginConfigConverter);
     }
 
+//    TODO scan을 호출해주는 곳이 없다.
+//    별도의 스레드 만들어서 순회해줘야 하나?
     public void scan(){
         Date curTime = new Date();
         try {
@@ -58,7 +84,7 @@ public class EDBPluginManager {
             if(cycleChanged){
                 manipulator.onPluginLifeCycleChanged(singlePlugin.getPluginIdx());
             }
-            singlePlugin.checkForLogics(curPrograms,curWebsites,curTime);
+            singlePlugin.checkForLogics(curWebsites,curTime);
         }
     }
 

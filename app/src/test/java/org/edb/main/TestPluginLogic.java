@@ -65,7 +65,7 @@ public class TestPluginLogic extends PluginLogic {
     }
 
     @Override
-    public void checkForLogic(EDBPlugin plugin, List<String> curPrograms, List<String> curWebsites, Date curTime) {
+    public void checkForLogic(EDBPlugin plugin,  List<String> curWebsites, Date curTime) {
 
     }
 

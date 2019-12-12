@@ -1,5 +1,6 @@
 package org.edb.main;
 
+import org.edb.main.UI.FXManipulator;
 import org.edb.main.model.PluginModel;
 import org.edb.main.network.JsonConverter;
 import org.edb.main.network.TempJsonConverter;
@@ -12,6 +13,10 @@ public class ServerResponseHandler {
     private UIManipulator uiManipulator;
     private EDBPluginManager pluginManager;
     private ServerRequester serverRequester;
+
+    public ServerResponseHandler() {
+
+    }
 
     public void setPluginManager(EDBPluginManager pluginManager) {
         this.pluginManager = pluginManager;
@@ -31,6 +36,7 @@ public class ServerResponseHandler {
             User user = User.getUser();
 
             serverRequester.requestUserExternalServices();
+//            TODO pluginConfig들 로그인시 불러오기
 //            serverRequester.requestPluginConfigs();
             uiManipulator.onLoginSuccessful(id);
         }
@@ -84,4 +90,7 @@ public class ServerResponseHandler {
         uiManipulator.onResponseUserSignup(success);
     }
 
+    public void setUiManipulator(UIManipulator manipulator) {
+        this.uiManipulator = manipulator;
+    }
 }

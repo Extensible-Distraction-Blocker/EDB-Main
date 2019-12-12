@@ -5,6 +5,7 @@ import org.edb.main.model.PluginModel;
 import org.edb.main.model.TargetProgram;
 import org.edb.main.model.TargetWebsite;
 import org.edb.main.util.DateFormatter;
+import org.pf4j.ExtensionPoint;
 
 import java.text.ParseException;
 import java.util.ArrayList;
@@ -12,7 +13,7 @@ import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
-public abstract class EDBPlugin {
+public abstract class EDBPlugin implements ExtensionPoint {
     protected Map<String, PluginLogic> pluginLogics;
     protected Map<String, TargetProgram> targetPrograms;
     protected Map<String, TargetWebsite> targetWebsites;
@@ -27,7 +28,7 @@ public abstract class EDBPlugin {
     public abstract String getPluginConfigUIPath();
 
     public abstract void renewTrackingTarget();
-    public abstract void checkForLogics(List<String> curPrograms, List<String> curWebsites, Date curTime);
+    public abstract void checkForLogics(List<String> curWebsites, Date curTime);
 
     public abstract int getPluginIdx();
     public abstract String getPluginName();

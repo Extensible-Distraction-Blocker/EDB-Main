@@ -39,12 +39,13 @@ public class BootApp extends Application {
         initRootLayout();
     }
 
+//    TODO 생성자가 아니라 setter를 통해 의존성 주입.
     public void initComponentRoots(){
-//        TODO pluginManager작업이 fxml 생성작업보다 우선해야 한다.
         FXManipulator fxManipulator= new FXManipulator();
         EDBPluginManager edbPluginManager = new EDBPluginManager();
         edbPluginManager.setManipulator(fxManipulator);
-        ServerResponseHandler serverResponseHandler=new ServerResponseHandler(fxManipulator);
+        ServerResponseHandler serverResponseHandler=new ServerResponseHandler();
+        serverResponseHandler.setUiManipulator(fxManipulator);
 
         RestAPIRequester restAPIRequester = new RestAPIRequester();
         restAPIRequester.setServerResponseHandler(serverResponseHandler);
@@ -82,8 +83,5 @@ public class BootApp extends Application {
     public static void main(String[] args) {
         launch(args);
     }
-
-
-
 
 }

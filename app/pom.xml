@@ -14,7 +14,7 @@
     <name>App</name>
 
     <properties>
-        <main.class>org.edb.main.Boot</main.class>
+        <main.class>org.edb.main.BootApp</main.class>
     </properties>
 
     <build>
@@ -102,6 +102,21 @@
             <artifactId>pf4j</artifactId>
             <version>${pf4j.version}</version>
         </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
+        <!-- https://mvnrepository.com/artifact/net.java.dev.jna/jna-platform -->
+        <dependency>
+            <groupId>net.java.dev.jna</groupId>
+            <artifactId>jna-platform</artifactId>
+            <version>5.5.0</version>
+        </dependency>
+
 
         <!-- Logs -->
         <dependency>

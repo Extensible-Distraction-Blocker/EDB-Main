@@ -21,7 +21,7 @@
                 <TableColumn fx:id="externalServiceDetail_IF_ARCHIEVE" minWidth="130.0" prefWidth="133.0" text="달성여부" />
             </columns>
         </TableView>
-        <Button fx:id="postExternalDetailBtn" onAction="#postExternalDetailRequest" layoutX="118.0" layoutY="150.0" mnemonicParsing="false" text="달성 갱신" visible ="false" />
+        <Button fx:id="postExternalDetailBtn" onAction="#postExternalDetailRequest" layoutX="118.0" layoutY="150.0" mnemonicParsing="false" text="달성갱신" visible ="false" />
     </children>
 
 

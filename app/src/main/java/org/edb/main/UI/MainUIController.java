@@ -27,7 +27,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.ResourceBundle;
 
-public class MainUIController implements Initializable{
+public class MainUIController{
     //    @FXML
     private HBox rootContainer;
     @FXML
@@ -57,8 +57,8 @@ public class MainUIController implements Initializable{
 
     public Stage primaryStage;
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void init(){
+        pluginNames.add("Default");
         pluginComboBox.setItems(pluginNames);
         pluginNameIdxMap= new HashMap<String,Integer>();
         fillPluginNameIdxMap();
@@ -66,6 +66,7 @@ public class MainUIController implements Initializable{
     }
 
     private void fillPluginNameIdxMap() {
+
         Map<Integer, EDBPlugin> pluginMap = pluginManager.getPlugins();
         for (Map.Entry<Integer, EDBPlugin> entry :
                 pluginMap.entrySet()) {
@@ -85,6 +86,9 @@ public class MainUIController implements Initializable{
     }
 
     public void setUiEventHandler(UIEventHandler uiEventHandler) {
+        if(uiEventHandler==null){
+            System.out.println("UIeventHandler null");
+        }
         this.uiEventHandler = uiEventHandler;
     }
 
@@ -147,6 +151,7 @@ public class MainUIController implements Initializable{
 
     public void setUILoggedIn(String id) {
         loginBtn.setDisable(true);
+        registerBtn.setVisible(false);
         userIdLbl.setVisible(true);
         userIdLbl.setText(id);
     }
@@ -157,14 +162,16 @@ public class MainUIController implements Initializable{
 
     public void onComboBoxSelected(){
         String selectedPluginName = pluginComboBox.getValue();
-        Integer selectedPluginIdx = pluginNameIdxMap.get(selectedPluginName);
-        Parent pluginConfigUI=null;
-        try {
-            pluginConfigUI = FXFactory.getInstance().loadPluginConfigUI("/fxml/PluginConfigUI.fxml",selectedPluginIdx);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(selectedPluginName!="Default") {
+            Integer selectedPluginIdx = pluginNameIdxMap.get(selectedPluginName);
+            Parent pluginConfigUI = null;
+            try {
+                pluginConfigUI = FXFactory.getInstance().loadPluginConfigUI("/fxml/PluginConfigUI.fxml", selectedPluginIdx);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            changeCenterUI(pluginConfigUI);
         }
-        changeCenterUI(pluginConfigUI);
     }
 
 }

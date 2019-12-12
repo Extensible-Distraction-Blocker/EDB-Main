@@ -1,4 +1,4 @@
-package org.edb.cycle;
+package org.edb.main.samplePlugin.cycle;
 
 import org.edb.main.EDBPlugin;
 import org.edb.main.PluginLogic;
@@ -45,5 +45,5 @@ public class CyclePlugin extends EDBPlugin {
     protected void onLifeCycleStart() {
         CycleLogic cycleLogic = (CycleLogic)pluginLogics.get("CycleLogic");
         cycleLogic.initializeLogicBeforeStart();
-}
+    }
 }
