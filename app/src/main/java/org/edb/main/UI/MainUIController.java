@@ -58,6 +58,7 @@ public class MainUIController{
     public Stage primaryStage;
 
     public void init(){
+        pluginNames.add("Default");
         pluginComboBox.setItems(pluginNames);
         pluginNameIdxMap= new HashMap<String,Integer>();
         fillPluginNameIdxMap();
@@ -150,6 +151,7 @@ public class MainUIController{
 
     public void setUILoggedIn(String id) {
         loginBtn.setDisable(true);
+        registerBtn.setVisible(false);
         userIdLbl.setVisible(true);
         userIdLbl.setText(id);
     }
@@ -160,14 +162,16 @@ public class MainUIController{
 
     public void onComboBoxSelected(){
         String selectedPluginName = pluginComboBox.getValue();
-        Integer selectedPluginIdx = pluginNameIdxMap.get(selectedPluginName);
-        Parent pluginConfigUI=null;
-        try {
-            pluginConfigUI = FXFactory.getInstance().loadPluginConfigUI("/fxml/PluginConfigUI.fxml",selectedPluginIdx);
-        } catch (Exception e) {
-            e.printStackTrace();
+        if(selectedPluginName!="Default") {
+            Integer selectedPluginIdx = pluginNameIdxMap.get(selectedPluginName);
+            Parent pluginConfigUI = null;
+            try {
+                pluginConfigUI = FXFactory.getInstance().loadPluginConfigUI("/fxml/PluginConfigUI.fxml", selectedPluginIdx);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            changeCenterUI(pluginConfigUI);
         }
-        changeCenterUI(pluginConfigUI);
     }
 
 }

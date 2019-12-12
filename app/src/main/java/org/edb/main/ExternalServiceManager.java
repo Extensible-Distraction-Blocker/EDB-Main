@@ -45,6 +45,9 @@ public class ExternalServiceManager {
     }
 
     public void loadExternalServiceDetail(int externalIdx, Iterable<ExternalServiceDetail> data){
+        System.out.println("loaded external details "+externalIdx);
+        System.out.println(data.toString());
+
         externalServiceDetails.put(externalIdx,data);
     }
 

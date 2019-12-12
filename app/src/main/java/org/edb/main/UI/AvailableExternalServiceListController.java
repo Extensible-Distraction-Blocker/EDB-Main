@@ -16,7 +16,7 @@ import java.net.URL;
 import java.util.ArrayList;
 import java.util.ResourceBundle;
 
-public class AvailableExternalServiceListController implements Initializable {
+public class AvailableExternalServiceListController{
     @FXML
     private TableView<FXExternalService> availableExternalServiceListView;
     @FXML
@@ -37,15 +37,13 @@ public class AvailableExternalServiceListController implements Initializable {
 
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void init(){
         //초기화
         availableExternalServiceTitle.setCellValueFactory(cellData -> cellData.getValue().nameProperty());
         availableExternalServiceUrl.setCellValueFactory(cellData -> cellData.getValue().urlProperty());
 
-//        loadAvailableExternalServiceList();
+        loadAvailableExternalServiceList();
     }
-
 
     public void loadAvailableExternalServiceList() {
         uiEventHandler.onAvailableExternalServiceListLoaded();

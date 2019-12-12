@@ -63,6 +63,7 @@ public class FXFactory {
 
         loader.<AvailableExternalServiceListController>getController().setUiEventHandler(uiEventHandler);
         fxManipulator.setAvailableExternalServicelListController(loader.getController());
+        loader.<AvailableExternalServiceListController>getController().init();
 
         return parent;
     }
@@ -104,6 +105,7 @@ public class FXFactory {
         controller.setPluginLogic(logic);
         logic.addController(controller);
 
+        System.out.println("pluginConfigUI Loaded");
         return parent;
     }
 }

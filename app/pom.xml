@@ -14,7 +14,7 @@
     <name>App</name>
 
     <properties>
-        <main.class>org.edb.main.Boot</main.class>
+        <main.class>org.edb.main.BootApp</main.class>
     </properties>
 
     <build>

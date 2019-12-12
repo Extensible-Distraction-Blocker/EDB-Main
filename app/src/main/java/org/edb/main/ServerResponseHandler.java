@@ -36,6 +36,7 @@ public class ServerResponseHandler {
             User user = User.getUser();
 
             serverRequester.requestUserExternalServices();
+//            TODO pluginConfig들 로그인시 불러오기
 //            serverRequester.requestPluginConfigs();
             uiManipulator.onLoginSuccessful(id);
         }
