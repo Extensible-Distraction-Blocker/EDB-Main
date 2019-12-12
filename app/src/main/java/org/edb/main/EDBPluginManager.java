@@ -82,7 +82,8 @@ public class EDBPluginManager {
                 plugins.values()) {
             boolean cycleChanged = singlePlugin.checkLifeCycle(curTime);
             if(cycleChanged){
-                manipulator.onPluginLifeCycleChanged(singlePlugin.getPluginIdx());
+//                TODO 주석처리됨
+//                manipulator.onPluginLifeCycleChanged(singlePlugin.getPluginIdx());
             }
             singlePlugin.checkForLogics(curWebsites,curTime);
         }

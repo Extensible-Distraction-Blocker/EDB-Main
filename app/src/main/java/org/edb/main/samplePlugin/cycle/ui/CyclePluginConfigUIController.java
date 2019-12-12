@@ -1,5 +1,6 @@
 package org.edb.main.samplePlugin.cycle.ui;
 
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
@@ -75,7 +76,9 @@ public class CyclePluginConfigUIController implements SpecificConfigUIController
     }
 
     public void renewUI() {
-        renewCurStateUI();
+        Platform.runLater(()->{
+            renewCurStateUI();
+        });
     }
 
 
@@ -91,11 +94,13 @@ public class CyclePluginConfigUIController implements SpecificConfigUIController
     }
 
     public void onPluginFinished() {
+        Platform.runLater(()->{
 //        현재상황 UI들 실행되지 않음으로 초기화
-        remainingWildCardLbl.setText("실행되지않음");
-        curModeLbl.setText("실행되지않음");
-        nextCycleTimeLbl.setText("실행되지않음");
-        wildCardBtn.setVisible(false);
+            remainingWildCardLbl.setText("실행되지않음");
+            curModeLbl.setText("실행되지않음");
+            nextCycleTimeLbl.setText("실행되지않음");
+            wildCardBtn.setVisible(false);
+        });
     }
 
     public void onWildCardBtnClicked(){
@@ -105,7 +110,9 @@ public class CyclePluginConfigUIController implements SpecificConfigUIController
     }
 
     public void onSpecificConfigUILoaded() {
-        loadFromLogic();
+        Platform.runLater(()->{
+            loadFromLogic();
+        });
     }
 
     private void loadFromLogic() {

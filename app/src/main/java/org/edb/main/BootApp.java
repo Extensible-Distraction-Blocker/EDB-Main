@@ -35,12 +35,22 @@ public class BootApp extends Application {
         this.primaryStage = primaryStage;
         this.primaryStage.setTitle("EDB-Main");
 
-        initComponentRoots();
+        EDBPluginManager edbPluginManager = initComponentRoots();
         initRootLayout();
+        new Thread(() -> {
+            while (true) {
+                try {
+                    Thread.sleep(1000);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                edbPluginManager.scan();
+            }
+        }).start();
     }
 
 //    TODO 생성자가 아니라 setter를 통해 의존성 주입.
-    public void initComponentRoots(){
+    public EDBPluginManager initComponentRoots(){
         FXManipulator fxManipulator= new FXManipulator();
         EDBPluginManager edbPluginManager = new EDBPluginManager();
         edbPluginManager.setManipulator(fxManipulator);
@@ -59,6 +69,8 @@ public class BootApp extends Application {
 
         FXFactory.getInstance().init(uiEventHandler,fxManipulator);
         FXFactory.getInstance().setPluginManager(edbPluginManager);
+
+        return edbPluginManager;
     }
 
     public void initRootLayout() {

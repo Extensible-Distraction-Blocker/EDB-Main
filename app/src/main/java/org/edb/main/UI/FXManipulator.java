@@ -86,11 +86,12 @@ public class FXManipulator implements UIManipulator {
 
     @Override
     public void onPluginLifeCycleChanged(int pluginIdx) {
-
-        if(pluginIdx == pluginConfigUIController.getPluginIdx()){
-            pluginConfigUIController.onLifeCycleChanged();
-        }
-
+        Platform.runLater(()->{
+            if(pluginIdx == pluginConfigUIController.getPluginIdx()){
+//                TODO null pluginConfigUIController
+                pluginConfigUIController.onLifeCycleChanged();
+            }
+        });
     }
 
 

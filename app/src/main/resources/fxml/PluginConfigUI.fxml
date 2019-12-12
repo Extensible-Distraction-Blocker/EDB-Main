@@ -15,9 +15,9 @@
          <content>
             <VBox fx:id="configArea" prefHeight="369.0" prefWidth="464.0">
                <children>
-                  <AnchorPane prefHeight="200.0" prefWidth="463.0">
+                  <AnchorPane prefHeight="200.0" prefWidth="460.0">
                      <children>
-                        <TableView fx:id="targetProgramTableView" prefHeight="155.0" prefWidth="463.0">
+                        <TableView fx:id="targetProgramTableView" prefHeight="155.0" prefWidth="460.0">
                           <columns>
                             <TableColumn fx:id="targetProgramNameColumn" prefWidth="150" text="프로그램 이름" />
                             <TableColumn fx:id="targetProgramPathColumn" prefWidth="250" text="경로" />
@@ -27,9 +27,9 @@
                         <Button layoutX="398.0" layoutY="157.0" mnemonicParsing="false" onAction="#deleteTargetProgram" prefHeight="29.0" prefWidth="58.0" text="삭제" />
                      </children>
                   </AnchorPane>
-                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="463.0">
+                  <AnchorPane layoutX="10.0" layoutY="10.0" prefHeight="200.0" prefWidth="460.0">
                      <children>
-                        <TableView fx:id="targetWebsiteTableView" prefHeight="155.0" prefWidth="463.0">
+                        <TableView fx:id="targetWebsiteTableView" prefHeight="155.0" prefWidth="460.0">
                            <columns>
                               <TableColumn fx:id="targetWebsiteURLColumn" prefWidth="400" text="웹사이트URL" />
                            </columns>

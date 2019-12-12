@@ -1,6 +1,5 @@
 package org.edb.main;
 
-import org.edb.main.UI.SpecificConfigUIController;
 import org.edb.main.model.PluginModel;
 import org.edb.main.model.TargetProgram;
 import org.edb.main.model.TargetWebsite;
@@ -36,6 +35,9 @@ public abstract class EDBPlugin implements ExtensionPoint {
         pluginLogics = new HashMap<String,PluginLogic>();
         targetPrograms = new HashMap<String, TargetProgram>();
         targetWebsites = new HashMap<String, TargetWebsite>();
+        Date date= new Date();
+        startDate=date;
+        endDate=date;
     }
 
     public void startPluginTime(){
