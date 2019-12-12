@@ -21,14 +21,14 @@ public class CycleLogic extends PluginLogic {
     private int wildCardLimit=15;
     private boolean wildCardUsed=false;
     private Date finishingTime;
-    private CycleMode curMode;
+    private CycleMode curMode = CycleMode.FOCUS;
     private List<Integer> targetExternalServices;
 //    TODO UI의존성.
     private CyclePluginConfigUIController controller;
 
     public CycleLogic() {
         this.targetExternalServices = new ArrayList<Integer>();
-        fxPath = "cycleLogicUI.fxml";
+        fxPath = "/fxml/cycleLogicUI.fxml";
     }
 
     public void addSingleConfig(String attributeName, String attributeValue) {

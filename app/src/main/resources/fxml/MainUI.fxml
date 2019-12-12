@@ -46,7 +46,9 @@
          </AnchorPane>
 
          <HBox fx:id="centerUI" alignment="CENTER" fillHeight="false" minHeight="0.0" minWidth="0.0" prefHeight="400.0" prefWidth="477.0">
+            <children>
 
+            </children>
          </HBox>
    </children>
 </HBox>

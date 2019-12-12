@@ -21,7 +21,7 @@ import java.util.*;
 
 import static org.edb.main.BootApp.primaryStage;
 
-public class PluginConfigUIController implements Initializable {
+public class PluginConfigUIController {
 
     private static double prefWidth = 463.0;
 
@@ -72,8 +72,7 @@ public class PluginConfigUIController implements Initializable {
         this.uiEventHandler=uiEventHandler;
     }
 
-    @Override
-    public void initialize(URL url, ResourceBundle resourceBundle) {
+    public void init(){
         targetProgramNameColumn.setCellValueFactory(cellData->cellData.getValue().targetNameProperty());
         targetProgramPathColumn.setCellValueFactory(cellData->cellData.getValue().targetPathProperty());
         targetWebsiteURLColumn.setCellValueFactory(cellData->cellData.getValue().targetURLProperty());
@@ -81,6 +80,7 @@ public class PluginConfigUIController implements Initializable {
 
         targetProgramTableView.setItems(fxTargetProgramObservableList);
         targetWebsiteTableView.setItems(fxTargetWebsiteObservableList);
+        fillPluginConfigUIContents();
     }
 
     public void fillPluginConfigUIContents(){
@@ -149,6 +149,7 @@ public class PluginConfigUIController implements Initializable {
                 new FileChooser.ExtensionFilter("All Files","*.*"));
         File selectedFile = fileChooser.showOpenDialog(primaryStage);
 
+        if(selectedFile==null)return;
         FXTargetProgram addedTargetProgram = new FXTargetProgram(selectedFile.getName(),selectedFile.getAbsolutePath());
 
         fxTargetProgramObservableList.add(addedTargetProgram);

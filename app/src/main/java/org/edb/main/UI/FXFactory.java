@@ -90,6 +90,7 @@ public class FXFactory {
         controller.setPluginManager(pluginManager);
         controller.setPlugin(pluginManager.findEDBPlugin(pluginIdx));
         fxManipulator.setPluginConfigUIController(controller);
+        controller.init();
 
         return parent;
     }
@@ -98,7 +99,7 @@ public class FXFactory {
 //        logic과 같은 패키지 안에 있는 경로로부터 resource를 가져와야 한다.
 
         String path = logic.getFxPath();
-        FXMLLoader loader = new FXMLLoader(logic.getClass().getResource(path));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource(path));
         Parent parent = loader.load();
 
         SpecificConfigUIController controller = loader.<SpecificConfigUIController>getController();
