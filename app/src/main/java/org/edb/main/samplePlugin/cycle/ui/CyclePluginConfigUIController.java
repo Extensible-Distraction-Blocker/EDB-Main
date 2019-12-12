@@ -66,7 +66,7 @@ public class CyclePluginConfigUIController implements SpecificConfigUIController
     }
 
     public void setPluginLogic(PluginLogic logic) {
-
+        cycleLogic = (CycleLogic)logic;
     }
 
     public void onPluginStart() {

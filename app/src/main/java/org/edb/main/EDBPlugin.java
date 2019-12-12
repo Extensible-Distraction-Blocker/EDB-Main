@@ -8,10 +8,7 @@ import org.edb.main.util.DateFormatter;
 import org.pf4j.ExtensionPoint;
 
 import java.text.ParseException;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public abstract class EDBPlugin implements ExtensionPoint {
     protected Map<String, PluginLogic> pluginLogics;
@@ -34,6 +31,12 @@ public abstract class EDBPlugin implements ExtensionPoint {
     public abstract String getPluginName();
     protected abstract void onLifeCycleEnd();
     protected abstract void onLifeCycleStart();
+
+    public EDBPlugin(){
+        pluginLogics = new HashMap<String,PluginLogic>();
+        targetPrograms = new HashMap<String, TargetProgram>();
+        targetWebsites = new HashMap<String, TargetWebsite>();
+    }
 
     public void startPluginTime(){
         onLifeCycleStart();
