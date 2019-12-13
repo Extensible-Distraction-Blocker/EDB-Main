@@ -1,7 +1,7 @@
 # Extensible Distraction Blocker
 플러그인을 통해 잠금 정책의 확장이 가능하며, REST API를 통해 외부 서비스의 연동을 할 수 있는 잠금 프로그램의 구조를 마련한다.
 
-시연 영상 링크 : 
+시연 영상 링크 : https://youtu.be/181bgtHYXlE
 
 ## 주요 아키텍처
 image 추가 예정
